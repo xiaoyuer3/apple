@@ -1,11 +1,11 @@
  .main{
 	text-align: center;
 	background-color: #FFF8DC;
-	border-radius: 20px;
-	width: 500px;
-	height: 300px;
-	position: absolute;
+	border-radius: 5%;
+	width: 20%;
+	height: 20%;
+	position: relative;
 	left: 50%;
-	top: 30%;
-	transform: translate(-50%,-50%);
+	top: 50%;
+	transform: translate(-50%,0%);
 }
