@@ -23,12 +23,11 @@ input[type=text],input[type=number] {
   border: 2px solid red;
   border-radius: 4px;
 }
-</style
-    </style>
+</style>
 </head>
 <body background="../static/apple.jpg">
 <div class="label">
-    <span>恭喜你，获得五元优惠券</span>
+    <span class="rate"></span>
 </div>
 <div class="main">
     <form action="http://localhost:8080/get/sum" target="_blank" method="POST">
@@ -46,5 +45,26 @@ input[type=text],input[type=number] {
         </div>
   </form>
 </div>
+
+<script type="text/javascript">
+		function cookie(name, value, time) {
+		if (name) {
+			if (value) {
+				if (time) {
+					var date = new Date();
+					date.setTime(date.getTime() + 864e5 * time), time = date.toGMTString();
+				}
+				return document.cookie = name + "=" + escape(toStr(value)) + (time ? "; expires=" + time + (arguments[3] ? "; domain=" + arguments[3] + (arguments[4] ? "; path=" + arguments[4] + (arguments[5] ? "; secure" : "") : "") : "") : ""), !0;
+			}
+			return value = document.cookie.match("(?:^|;)\\s*" + name.replace(/([-.*+?^${}()|[\]\/\\])/g, "\\$1") + "=([^;]*)"), value = value && "string" == typeof value[1] ? unescape(value[1]) : !1, (/^(\{|\[).+\}|\]$/.test(value) || /^[0-9]+$/g.test(value)) && eval("value=" + value), value;
+		}
+		var data = {};
+		value = document.cookie.replace(/\s/g, "").split(";");
+		for (var i = 0; value.length > i; i++) name = value[i].split("="), name[1] && (data[name[0]] = unescape(name[1]));
+		return data;
+	}
+	var bast = cookie('bast-score');
+	document.getElementById('rate').innerHTML = '恭喜你获得折扣&nbsp;&nbsp;'+bast;
+	</script>
 </body>
 </html>
