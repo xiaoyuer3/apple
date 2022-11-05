@@ -40,4 +40,4 @@ def index():
 
 if __name__ == "__main__":
     #app.config["JSON_AS_ASCII"] = False
-    app.run(host="123.56.236.137", port=8083,debug=False)
+    app.run(host="0.0.0.1", port=90083,debug=False)
