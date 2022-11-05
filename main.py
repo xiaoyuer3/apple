@@ -33,6 +33,10 @@ def get_sum():
     info["age"] = 8928
     return jsonify(info)
 
+@app.route('/address')
+def address():
+    return render_template("address.html")
+
 @app.route('/')
 def index():
     data = {'nickname': 'Miguel'}  # fake user
