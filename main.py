@@ -33,9 +33,9 @@ def get_sum():
     info["age"] = 8928
     return jsonify(info)
 
-@app.route('/address')
+@app.route('/info')
 def address():
-    return render_template("address.html")
+    return render_template("info.html")
 
 @app.route('/')
 def index():
