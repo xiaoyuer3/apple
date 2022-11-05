@@ -424,7 +424,7 @@ display: none;
 
 	function checkRate(){
 	    var bast = cookie('bast-score');
-	    var rate = (100-bast/10)/100;
+	    var rate = ((100-bast/10)/100).toFixed(3);
 	    if (rate<0.7) {
 	        rate=0.7;
 	    }
