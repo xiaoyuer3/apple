@@ -421,6 +421,15 @@ display: none;
 			this.style.display = 'none';
 		};
 	}
+
+	function checkRate(){
+	    var bast = cookie('bast-score');
+	    var rate = (100-bast/10)/100;
+	    if (rate<0.7) {
+	        rate=0.7;
+	    }
+	    document.getElementById('appRate').innerHTML = '折扣率&nbsp;&nbsp;'+rate;
+	}
 	
 	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
 	    
@@ -458,7 +467,7 @@ display: none;
 			<br/>
 			<div id="GameScoreLayer-btn" class="BOX">
 				<div class="btn BOX-S" onClick="replayBtn()">重来</div>&nbsp;
-				<div class="btn BOX-S" onClick="share()">分享到朋友圈</div>&nbsp;
+				<div class="btn BOX-S" id="appRate" onClick="checkRate()">折扣率</div>&nbsp;
 				
 			</div>
 			<br/>

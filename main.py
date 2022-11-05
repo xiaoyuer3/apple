@@ -14,7 +14,6 @@ def get_sum():
     now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     now_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
     bast = int(request.cookies.get("bast-score").strip())
-    print(type(bast))
     rate = 1.0
     if(bast>0 and bast<1):
         rate = (100 - bast / 10) / 100
