@@ -1,37 +1,35 @@
 # coding=utf-8
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, make_response
 import urllib
+import time
 
 app = Flask(__name__)
 
 
-@app.route("/get/sum", methods=["GET", "POST"])
+@app.route("/order", methods=["GET", "POST"])
 def get_sum():
-    data = request.get_data()
-    print("header {}".format(request.headers))
-    print("data = ", data)
-
-    text = data.decode("utf-8")
-    sp = text.split("&")
-    print("text = {}".format(text))
-
-    print(urllib.parse.unquote(text, encoding="utf-8"))
-
-    i = 0
-    kv = {}
-    for s in sp:
-        print("{} s = {}".format(i, s))
-        pp = s.split("=")
-        if (len(pp) == 2):
-            value = pp[1]
-            kv[pp[0]] = value
-            print(urllib.parse.unquote(value, encoding="utf-8"))
-
-    print("kv {}".format(kv))
-    info = {}
-    info['name'] = "中文"
-    info["age"] = 8928
-    return jsonify(info)
+    name = request.form.get("input-name")
+    address = request.form.get("input-address")
+    phone = request.form.get("input-number")
+    now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+    now_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
+    bast = request.cookies.get("bast-score")
+    print("bast:"+bast)
+    rate = 1
+    if(bast>0 and bast<1):
+        rate = (100 - bast / 10) / 100
+        if (rate < 0.7):
+            rate = 0.7
+    else:
+        rate= 1
+    with open("result/"+str(now_time)+name,"w") as fw:
+        fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
+    obj = dict()
+    obj['name']=name
+    obj['address']=address
+    obj['phone']=phone
+    obj['bast']=bast
+    return render_template("finalOrder.html",data=obj)
 
 @app.route('/info')
 def address():

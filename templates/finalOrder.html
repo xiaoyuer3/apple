@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../static/style2.css" />
     <style>
         input[type=button], input[type=submit], input[type=reset] {
         background-color: #4CAF50;
@@ -26,24 +26,28 @@ input[type=text],input[type=number] {
 </style>
 </head>
 <body background="../static/apple.jpg">
-<div id="BuyRate" style="font-size:30px; color:#F00;font-family:'楷体';"  onClick="value()">
-开奖了，点这里
-</div>
-<div align="center"><h1 style="color:white;font-family:'楷体'">请登记您的邮寄信息</h1></div>
+<div align="center"><h1 style="color:red;font-family:'楷体'">延安苹果！感谢您的支持！祝您身体健康！</h1></div>
 <div class="main">
     <form action="order" target="_blank" method="POST">
         <div class="input-name">
-            <input type="text" class="form-control" id="exampleInputName1" name="input-name" placeholder="请准确输入姓名">
+            <p><span style="color:black;font-family:'楷体'">老板，您订单的详细信息</span></p>
+        </div>
+        <div class="input-name">
+            <p><span style="color:black;font-family:'楷体'">姓名:</span><span style="color:green;font-family:'楷体'">{{data.get('name')}}</span></p>
         </div>
         <div class="input-number">
-            <input type="number" class="form-control" id="exampleInputName2" name="input-number" placeholder="请准确输入手机号码">
+            <p><span style="color:black;font-family:'楷体'">电话:</span><span style="color:green;font-family:'楷体'">{{data.get('phone')}}</span></p>
         </div>
         <div class="input-address">
-            <input type="text" class="form-control" id="address" name="input-address" placeholder="请准确输入邮寄地址">
+            <p><span style="color:black;font-family:'楷体'">地址:</span><span style="color:green;font-family:'楷体'">{{data.get('address')}}</span></p>
         </div>
-        <div class="form-group">
-            <input type="submit" class="form-control" id="submit" placeholder="提交">
+         <div class="form-group">
+           <a class="btn BOX-S" align="center" style="color:green;font-family:'楷体'" href="/">继续游戏</a>
         </div>
+        <div class="input-address">
+            <p><span style="color:black;font-family:'楷体'">感谢您的支持，您的订单我们已经收到，稍后微信联系您，出现问题一切最终解释权归网站所有</span></p>
+        </div>
+
   </form>
 </div>
 
@@ -63,15 +67,6 @@ input[type=text],input[type=number] {
 		value = document.cookie.replace(/\s/g, "").split(";");
 		for (var i = 0; value.length > i; i++) name = value[i].split("="), name[1] && (data[name[0]] = unescape(name[1]));
 		return data;
-	}
-
-	function value(){
-	    var bast = cookie('bast-score');
-	    var rate = (100-bast/10)/100;
-	    if (rate<0.7) {
-	        rate=0.7;
-	    }
-	    document.getElementById('BuyRate').innerHTML = '您最佳成绩&nbsp;&nbsp;'+bast +'&nbsp;&nbsp个苹果<br> 赢得折扣率&nbsp;&nbsp'+rate;
 	}
 
 	</script>
