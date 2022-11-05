@@ -36,7 +36,7 @@ def get_sum():
 @app.route('/')
 def index():
     data = {'nickname': 'Miguel'}  # fake user
-    return render_template("index.html",u=data)
+    return render_template("address.html",u=data)
 
 if __name__ == "__main__":
     #app.config["JSON_AS_ASCII"] = False
