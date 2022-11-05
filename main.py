@@ -13,15 +13,15 @@ def get_sum():
     phone = request.form.get("input-number")
     now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     now_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
-    bast = request.cookies.get("bast-score")
-    print("bast:"+bast)
-    rate = 1
+    bast = int(request.cookies.get("bast-score").strip())
+    print(type(bast))
+    rate = 1.0
     if(bast>0 and bast<1):
         rate = (100 - bast / 10) / 100
         if (rate < 0.7):
             rate = 0.7
     else:
-        rate= 1
+        rate= 1.0
     with open("result/"+str(now_time)+name,"w") as fw:
         fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
     obj = dict()
