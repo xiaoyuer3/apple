@@ -22,14 +22,18 @@ def get_sum():
             rate = 0.7
     else:
         rate= 1.0
-    with open("result/"+str(now_time)+name,"w") as fw:
-        fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
-    obj = dict()
-    obj['name']=name
-    obj['address']=address
-    obj['phone']=phone
-    obj['bast']=bast
-    return render_template("finalOrder.html",data=obj)
+    if(name!=None and address!=None and phone!=None):
+        with open("result/"+now_time+name,"w") as fw:
+            fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
+        obj = dict()
+        obj['name']=name
+        obj['address']=address
+        obj['phone']=phone
+        obj['bast']=bast
+        return render_template("finalOrder.html", data=obj)
+    else:
+        return render_template("info.html")
+
 
 @app.route('/info')
 def address():
