@@ -22,6 +22,9 @@ def get_sum():
             rate = 0.7
     else:
         rate= 1.0
+    print("name:",name)
+    print("address:",address)
+    print("phone:",phone)
     if(name!=None and address!=None and phone!=None):
         with open("result/"+now_time+name,"w") as fw:
             fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
