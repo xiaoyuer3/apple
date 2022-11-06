@@ -33,7 +33,7 @@ def get_sum():
         logging.info("填写成功!{},{},{}", name+address+phone)
         return render_template("finalOrder.html", data=obj)
     else:
-        logging.info("填写未成功！{},{},{}",name+address+phone)
+        logging.info("填写未成功")
         return render_template("info.html")
 
 
