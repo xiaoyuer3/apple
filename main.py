@@ -1,8 +1,7 @@
 # coding=utf-8
 import logging
 
-from flask import Flask, request, jsonify, render_template, make_response
-import urllib
+from flask import Flask, request, render_template
 import time
 
 app = Flask(__name__)
@@ -10,23 +9,20 @@ app = Flask(__name__)
 
 @app.route("/order", methods=["GET", "POST"])
 def get_sum():
-    name = request.form.get("input-name")
-    address = request.form.get("input-address")
+    name = request.args.get("input-name")
+    address = request.args.get("input-address")
     phone = request.form.get("input-number")
     now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     now_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
-    bast = int(request.cookies.get("bast-score").strip())
-    rate = 1.0
-    if(bast>0 and bast<1):
-        rate = (100 - bast / 10) / 100
-        if (rate < 0.7):
-            rate = 0.7
-    else:
-        rate= 1.0
-    logging.info("name:",name)
-    logging.info("address:",address)
-    logging.info("phone:",phone)
     if(name!=None and address!=None and phone!=None):
+        bast = int(request.cookies.get("bast-score").strip())
+        rate = 1.0
+        if (bast > 0 and bast < 1):
+            rate = (100 - bast / 10) / 100
+            if (rate < 0.7):
+                rate = 0.7
+        else:
+            rate = 1.0
         with open("result/"+now_time+name,"w") as fw:
             fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
         obj = dict()
@@ -34,10 +30,10 @@ def get_sum():
         obj['address']=address
         obj['phone']=phone
         obj['bast']=bast
-        logging.info("填写成功！{},{},{}", name,address,phone)
+        logging.info("填写成功!{},{},{}", name+address+phone)
         return render_template("finalOrder.html", data=obj)
     else:
-        logging.info("填写未成功！{},{},{}",name,address,phone)
+        logging.info("填写未成功！{},{},{}",name+address+phone)
         return render_template("info.html")
 
 
