@@ -1,4 +1,6 @@
 # coding=utf-8
+import logging
+
 from flask import Flask, request, jsonify, render_template, make_response
 import urllib
 import time
@@ -21,9 +23,9 @@ def get_sum():
             rate = 0.7
     else:
         rate= 1.0
-    print("name:",name)
-    print("address:",address)
-    print("phone:",phone)
+    logging.info("name:",name)
+    logging.info("address:",address)
+    logging.info("phone:",phone)
     if(name!=None and address!=None and phone!=None):
         with open("result/"+now_time+name,"w") as fw:
             fw.write(name+"+"+str(time.time())+"\t"+address+"\t"+str(bast)+"\t"+str(rate)+"\t"+str(phone)+"\t"+now)
@@ -32,10 +34,10 @@ def get_sum():
         obj['address']=address
         obj['phone']=phone
         obj['bast']=bast
-        print("填写成功！", name + "\t" + address + "\t" + phone)
+        logging.info("填写成功！{},{},{}", name,address,phone)
         return render_template("finalOrder.html", data=obj)
     else:
-        print("填写未成功！",name+"\t"+address+"\t"+phone)
+        logging.info("填写未成功！{},{},{}",name,address,phone)
         return render_template("info.html")
 
 
