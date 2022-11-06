@@ -9,8 +9,8 @@ app = Flask(__name__)
 
 @app.route("/order", methods=["GET", "POST"])
 def get_sum():
-    name = request.args.get("input-name")
-    address = request.args.get("input-address")
+    name = request.form.get("input-name")
+    address = request.form.get("input-address")
     phone = request.form.get("input-number")
     now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     now_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
