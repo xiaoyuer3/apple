@@ -1,0 +1,9 @@
+2022-11-06 Sunday 14:11:51  _internal.py : INFO   * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+2022-11-06 Sunday 14:12:07  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:07] "[37mGET / HTTP/1.1[0m" 200 -
+2022-11-06 Sunday 14:12:08  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:08] "[33mGET /81345eabgw1ei0jyahwhwj20gp0qzt9s.jpg HTTP/1.1[0m" 404 -
+2022-11-06 Sunday 14:12:08  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:08] "[33mGET /download.gif HTTP/1.1[0m" 404 -
+2022-11-06 Sunday 14:12:10  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:10] "[37mGET /info HTTP/1.1[0m" 200 -
+2022-11-06 Sunday 14:12:16  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:16] "[37mPOST /order HTTP/1.1[0m" 200 -
+2022-11-06 Sunday 14:12:19  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:19] "[37mGET / HTTP/1.1[0m" 200 -
+2022-11-06 Sunday 14:12:19  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:19] "[33mGET /81345eabgw1ei0jyahwhwj20gp0qzt9s.jpg HTTP/1.1[0m" 404 -
+2022-11-06 Sunday 14:12:19  _internal.py : INFO  127.0.0.1 - - [06/Nov/2022 14:12:19] "[33mGET /download.gif HTTP/1.1[0m" 404 -

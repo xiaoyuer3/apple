@@ -6,6 +6,12 @@ import time
 
 app = Flask(__name__)
 
+logging.basicConfig(
+                    level    = logging.INFO,
+                    format   = '%(asctime)s  %(filename)s : %(levelname)s  %(message)s',
+                    datefmt  = '%Y-%m-%d %A %H:%M:%S',
+                    filename = "log/apple.log",
+                    filemode = 'w')
 
 @app.route("/order", methods=["GET", "POST"])
 def get_sum():
@@ -30,10 +36,10 @@ def get_sum():
         obj['address']=address
         obj['phone']=phone
         obj['bast']=bast
-        logging.info("填写成功!{},{},{}", name,address,phone)
+        logging.info("填写成功!{},{},{}".format(name,address,phone))
         return render_template("finalOrder.html", data=obj)
     else:
-        logging.info("填写未成功！{},{},{}",name,address,phone)
+        logging.info("填写未成功！{},{},{}".format(name,address,phone))
         return render_template("info.html")
 
 
