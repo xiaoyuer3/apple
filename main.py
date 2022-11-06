@@ -30,10 +30,10 @@ def get_sum():
         obj['address']=address
         obj['phone']=phone
         obj['bast']=bast
-        logging.info("填写成功!{},{},{}", name+address+phone)
+        logging.info("填写成功!{},{},{}", name,address,phone)
         return render_template("finalOrder.html", data=obj)
     else:
-        logging.info("填写未成功")
+        logging.info("填写未成功！{},{},{}",name,address,phone)
         return render_template("info.html")
 
 
